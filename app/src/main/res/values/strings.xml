@@ -10,4 +10,6 @@
     <string name="user_enter_pin">Unesite pin</string>
     <string name="action_prijava">Prijava</string>
     <string name="info_login">Informacioni sistem za pracenje stanja pacijenata obolelih od Covid-19</string>
+    <string name="action_zdrav">Zdrav</string>
+    <string name="action_hospitalizacija">Hospitalizacija</string>
 </resources>

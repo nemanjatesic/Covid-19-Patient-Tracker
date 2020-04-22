@@ -28,7 +28,7 @@ class LoginActivity : AppCompatActivity(){
                 val editor = sharedPreferences.edit()
                 editor.putBoolean(LOGGED_IN_KEY, true)
                 editor.apply()
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, RecyclerActivity::class.java)
                 startActivity(intent)
                 finish()
             }
