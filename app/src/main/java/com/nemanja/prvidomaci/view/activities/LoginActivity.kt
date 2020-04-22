@@ -13,6 +13,9 @@ import kotlinx.android.synthetic.main.activity_login.*
 class LoginActivity : AppCompatActivity(){
     companion object {
         const val LOGGED_IN_KEY = "loggedIn"
+        const val USER_NAME = "userName"
+        const val USER_LAST_NAME = "userLastName"
+        const val USER_HOSPITAL = "userHospital"
         const val BELGRADE_PIN = 4200
         const val VALJEVO_PIN = 1000
     }
@@ -20,6 +23,10 @@ class LoginActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        initListeners()
+    }
+
+    private fun initListeners() {
         button_login_prijava.setOnClickListener {
             if (checkText(et_user_name, "Molimo vas unesite ime") &&
                 checkText(et_user_lastname, "Molimo vas unesite prezime") &&
@@ -27,6 +34,9 @@ class LoginActivity : AppCompatActivity(){
                 val sharedPreferences = getSharedPreferences(packageName, Context.MODE_PRIVATE)
                 val editor = sharedPreferences.edit()
                 editor.putBoolean(LOGGED_IN_KEY, true)
+                editor.putString(USER_NAME,et_user_name.text.toString())
+                editor.putString(USER_LAST_NAME,et_user_lastname.text.toString())
+                editor.putString(USER_HOSPITAL,et_user_hospital.text.toString())
                 editor.apply()
                 val intent = Intent(this, RecyclerActivity::class.java)
                 startActivity(intent)

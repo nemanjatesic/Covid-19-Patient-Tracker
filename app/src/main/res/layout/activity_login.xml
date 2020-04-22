@@ -13,51 +13,56 @@
         android:layout_height="40dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="26dp"
-        android:background="@drawable/edit_text_border"
-
-        android:gravity="center"
         android:layout_marginEnd="24dp"
+
+        android:background="@drawable/edit_text_border"
+        android:gravity="center"
         android:hint="@string/user_enter_pin"
         android:imeOptions="actionDone"
         android:inputType="numberPassword"
         android:selectAllOnFocus="true"
+        app:layout_constraintBottom_toTopOf="@+id/button_login_prijava"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_user_hospital" />
 
     <EditText
         android:id="@+id/et_user_hospital"
-        android:paddingStart="10dp"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="26dp"
-        android:background="@drawable/edit_text_border"
-
         android:layout_marginTop="26dp"
         android:layout_marginEnd="26dp"
+
+        android:background="@drawable/edit_text_border"
         android:hint="@string/user_enter_hospital"
         android:inputType="textEmailAddress"
+        android:paddingStart="10dp"
         android:selectAllOnFocus="true"
+        app:layout_constraintBottom_toTopOf="@+id/et_pin"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_user_lastname" />
 
     <EditText
 
         android:id="@+id/et_user_lastname"
-        android:paddingStart="10dp"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="26dp"
-        android:background="@drawable/edit_text_border"
-
         android:layout_marginTop="26dp"
         android:layout_marginEnd="26dp"
+
+        android:background="@drawable/edit_text_border"
         android:hint="@string/user_enter_lastname"
         android:inputType="textPersonName"
+        android:paddingStart="10dp"
         android:selectAllOnFocus="true"
+        app:layout_constraintBottom_toTopOf="@+id/et_user_hospital"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_user_name" />
 
@@ -74,8 +79,9 @@
         android:inputType="textPersonName"
         android:paddingStart="10dp"
         android:selectAllOnFocus="true"
+        app:layout_constraintBottom_toTopOf="@+id/et_user_lastname"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -85,25 +91,27 @@
         android:layout_height="50dp"
         android:layout_gravity="start"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="76dp"
         android:layout_marginEnd="48dp"
+        android:background="#424242"
         android:enabled="true"
         android:text="@string/action_prijava"
         android:textColor="@color/white"
-        android:background="#424242"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_pin" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_marginTop="16dp"
         android:src="@drawable/splash_logo"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -115,7 +123,9 @@
         android:gravity="center"
         android:text="@string/info_login"
         android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/et_user_name"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,9 +7,16 @@
     <string name="user_enter_name">Unesite ime</string>
     <string name="user_enter_lastname">Unesite prezime</string>
     <string name="user_enter_hospital">Unesite ime bolnice u kojoj ste zaposleni</string>
+    <string name="user_enter_symptoms">Unesite simptome i opste stanje pacijenta</string>
     <string name="user_enter_pin">Unesite pin</string>
     <string name="action_prijava">Prijava</string>
     <string name="info_login">Informacioni sistem za pracenje stanja pacijenata obolelih od Covid-19</string>
     <string name="action_zdrav">Zdrav</string>
     <string name="action_hospitalizacija">Hospitalizacija</string>
+    <string name="pregled_brojnog_stanja">Pregled brojnog stanja pacijenata</string>
+    <string name="broj_cekaonica">Broj pacijenata u cekaonici</string>
+    <string name="broj_hospitalizovanih">Broj hospitalizovanih pacijenata</string>
+    <string name="broj_otpustenih">Broj otpustenih pacijenata</string>
+    <string name="unos_novog_pacijenta">Unos novog pacijenta</string>
+    <string name="dodaj_u_cekaonicu">Dodaj u cekaonicu</string>
 </resources>

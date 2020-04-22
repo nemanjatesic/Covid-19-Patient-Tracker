@@ -7,4 +7,8 @@
     <color name="colorPozadinaSplasha">#51BBD0</color>
     <color name="transparent">#80000000</color>
     <color name="black">#000000</color>
+    <color name="orange">#FF9900</color>
+    <color name="red">#FF0000</color>
+    <color name="blue">#0066FF</color>
+    <color name="njegova_zelena">#43938A</color>
 </resources>
