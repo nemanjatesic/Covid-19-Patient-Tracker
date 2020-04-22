@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">PrviDomaci</string>
+    <string name="title_stanje">Stanje</string>
+    <string name="title_unos">Unos</string>
+    <string name="title_liste">Liste</string>
+    <string name="title_profil">Profil</string>
+    <string name="user_enter_name">Unesite ime</string>
+    <string name="user_enter_lastname">Unesite prezime</string>
+    <string name="user_enter_hospital">Unesite ime bolnice u kojoj ste zaposleni</string>
+    <string name="user_enter_pin">Unesite pin</string>
+    <string name="action_prijava">Prijava</string>
+    <string name="info_login">Informacioni sistem za pracenje stanja pacijenata obolelih od Covid-19</string>
+</resources>
