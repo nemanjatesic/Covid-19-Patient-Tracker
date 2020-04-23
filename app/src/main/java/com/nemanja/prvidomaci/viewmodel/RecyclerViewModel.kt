@@ -46,25 +46,4 @@ class RecyclerViewModel : ViewModel() {
         }
         patients.value = filteredList
     }
-
-    fun addPatient(pictureUrl: String?, name: String?, lastName: String?, hospital: String?, stateOnReception: String?,
-               currentState: String?, inHospital: Boolean?, dateOfArrival: String?, dateOfLeaving: String?) {
-        val patient = Patient(
-            Random.nextInt(101, 99999),
-            pictureUrl ?: "https://us.123rf.com/450wm/mialima/mialima1603/mialima160300025/55096766-stock-vector-male-user-icon-isolated-on-a-white-background-account-avatar-for-web-user-profile-picture-unknown-ma.jpg?ver=6",
-            name ?: "Jane",
-            lastName ?: "Doe",
-            hospital ?: "Unknown",
-            stateOnReception ?: "Unknown",
-            currentState ?: "Unknown",
-            inHospital ?: true,
-            dateOfArrival ?: "Unknown",
-            dateOfLeaving ?: "Unknown"
-        )
-        patientList.add(patient)
-        val listToSubmit = mutableListOf<Patient>()
-        listToSubmit.addAll(patientList)
-        patients.value = listToSubmit
-    }
-
 }

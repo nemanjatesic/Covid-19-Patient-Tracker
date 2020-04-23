@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">PrviDomaci</string>
+    <string name="title_ime">Ime:</string>
+    <string name="title_prezime">Prezime:</string>
+    <string name="title_bolnica">Bolnica:</string>
     <string name="title_stanje">Stanje</string>
     <string name="title_unos">Unos</string>
     <string name="title_liste">Liste</string>
@@ -19,4 +22,7 @@
     <string name="broj_otpustenih">Broj otpustenih pacijenata</string>
     <string name="unos_novog_pacijenta">Unos novog pacijenta</string>
     <string name="dodaj_u_cekaonicu">Dodaj u cekaonicu</string>
+    <string name="podaci_o_radniku">Podaci o zdravstvenom radniku</string>
+    <string name="izmeni">Izmeni</string>
+    <string name="odjava">Odjava</string>
 </resources>

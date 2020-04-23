@@ -38,7 +38,7 @@ class LoginActivity : AppCompatActivity(){
                 editor.putString(USER_LAST_NAME,et_user_lastname.text.toString())
                 editor.putString(USER_HOSPITAL,et_user_hospital.text.toString())
                 editor.apply()
-                val intent = Intent(this, RecyclerActivity::class.java)
+                val intent = Intent(this, BottomNavigationActivity::class.java)
                 startActivity(intent)
                 finish()
             }
