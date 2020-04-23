@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.nemanja.prvidomaci.R
+import com.nemanja.prvidomaci.model.Patient
+import com.nemanja.prvidomaci.model.PatientFactory
 import com.nemanja.prvidomaci.view.recycler.adapter.PatientAdapter
 import com.nemanja.prvidomaci.view.recycler.diff.PatientDiffItemCallback
 import com.nemanja.prvidomaci.viewmodel.RecyclerViewModel
@@ -43,17 +45,7 @@ class RecyclerActivity : AppCompatActivity(R.layout.activity_classic_recycler) {
             recyclerViewModel.filterPatients(it.toString(),null)
         }
         doMagicBtn.setOnClickListener {
-            recyclerViewModel.addPatient(
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR9vMHQzf3GMYiI2WnYG9TUKnGAQFevruSgJF35VLAJe_odBMVd&usqp=CAU",
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null
-            )
+            recyclerViewModel.addPatient(PatientFactory().createPatient())
         }
     }
 

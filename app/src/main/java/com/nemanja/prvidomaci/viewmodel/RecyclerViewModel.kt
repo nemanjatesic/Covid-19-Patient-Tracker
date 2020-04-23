@@ -46,4 +46,11 @@ class RecyclerViewModel : ViewModel() {
         }
         patients.value = filteredList
     }
+
+    fun addPatient(patient: Patient) {
+        patientList.add(patient)
+        val listToSubmit = mutableListOf<Patient>()
+        listToSubmit.addAll(patientList)
+        patients.value = listToSubmit
+    }
 }
