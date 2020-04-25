@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.nemanja.prvidomaci.model.Patient
+import com.nemanja.prvidomaci.model.PatientFactory
+import java.util.*
 import kotlin.random.Random
 
 class SharedViewModel : ViewModel() {
@@ -42,7 +44,7 @@ class SharedViewModel : ViewModel() {
     }
 
     private fun addPatient(pictureUrl: String?, name: String?, lastName: String?, hospital: String?, stateOnReception: String?,
-                           currentState: String?, inHospital: Boolean?, dateOfArrival: String?, dateOfLeaving: String?) : Patient{
+                           currentState: String?, inHospital: Boolean?, dateOfArrival: Date?, dateOfLeaving: Date?) : Patient{
         return Patient(
             Random.nextInt(101, 99999),
             pictureUrl
@@ -53,8 +55,8 @@ class SharedViewModel : ViewModel() {
             stateOnReception ?: "Unknown",
             currentState ?: "Unknown",
             inHospital ?: true,
-            dateOfArrival ?: "Unknown",
-            dateOfLeaving ?: "Unknown"
+            dateOfArrival ?: PatientFactory.unknownDate,
+            dateOfLeaving ?: PatientFactory.unknownDate
         )
     }
 

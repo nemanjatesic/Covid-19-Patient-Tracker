@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/et_user_hospital_change"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+
+        android:layout_marginTop="24dp"
+        android:background="@drawable/edit_text_border"
+        android:inputType="textPersonName"
+        android:paddingStart="10dp"
+        android:selectAllOnFocus="true"
+        app:layout_constraintEnd_toEndOf="@+id/et_user_lastname_change"
+        app:layout_constraintStart_toStartOf="@+id/et_user_lastname_change"
+        app:layout_constraintTop_toBottomOf="@+id/et_user_lastname_change" />
+
+    <EditText
+        android:id="@+id/et_user_name_change"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+
+        android:layout_marginTop="32dp"
+        android:background="@drawable/edit_text_border"
+        android:inputType="textPersonName"
+        android:paddingStart="10dp"
+        android:selectAllOnFocus="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_profil2" />
+
+    <EditText
+        android:id="@+id/et_user_lastname_change"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+
+        android:layout_marginTop="24dp"
+        android:background="@drawable/edit_text_border"
+        android:inputType="textEmailAddress"
+        android:lines="4"
+        android:maxLines="6"
+        android:paddingStart="10dp"
+        android:selectAllOnFocus="true"
+        app:layout_constraintEnd_toEndOf="@+id/et_user_name_change"
+        app:layout_constraintStart_toStartOf="@+id/et_user_name_change"
+        app:layout_constraintTop_toBottomOf="@+id/et_user_name_change" />
+
+    <ImageView
+        android:id="@+id/imageView_profil2"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/ic_healing_black_24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <Button
+        android:id="@+id/buttonOdustani"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="44dp"
+        android:background="#424242"
+        android:text="@string/odustani"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/et_user_hospital_change"
+        app:layout_constraintTop_toBottomOf="@+id/et_user_hospital_change" />
+
+    <Button
+        android:id="@+id/buttonChange"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:background="#424242"
+        android:text="@string/izmeni"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/et_user_hospital_change"
+        app:layout_constraintHorizontal_bias="0.797"
+        app:layout_constraintStart_toEndOf="@+id/buttonOdustani"
+        app:layout_constraintTop_toBottomOf="@+id/et_user_hospital_change" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="23dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/podaci_o_radniku"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

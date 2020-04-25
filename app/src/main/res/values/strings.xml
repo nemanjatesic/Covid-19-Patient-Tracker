@@ -25,4 +25,5 @@
     <string name="podaci_o_radniku">Podaci o zdravstvenom radniku</string>
     <string name="izmeni">Izmeni</string>
     <string name="odjava">Odjava</string>
+    <string name="odustani">Odustani</string>
 </resources>

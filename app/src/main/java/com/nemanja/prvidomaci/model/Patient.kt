@@ -1,5 +1,7 @@
 package com.nemanja.prvidomaci.model
 
+import java.util.*
+
 data class Patient(
     val id: Int,
     val picture: String,
@@ -9,6 +11,6 @@ data class Patient(
     val stateOnReception: String,
     val currentState: String,
     val inHospital: Boolean,
-    val dateOfArrival: String,
-    val dateOfLeaving: String
+    val dateOfArrival: Date,
+    val dateOfLeaving: Date
 )

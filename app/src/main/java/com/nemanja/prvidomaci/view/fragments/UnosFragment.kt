@@ -39,26 +39,28 @@ class UnosFragment : Fragment(R.layout.fragment_unos) {
             val patientSymptoms = et_user_hospital_unos
 
             if (patientName == null || patientLastName == null || patientSymptoms == null) {
-                Toast.makeText(activity?.applicationContext,"Unesite makar nesto u svako polje", Toast.LENGTH_SHORT).show()
-            }
-
-            if (checkText(patientName,"Unesite ime pacijenta") &&
+                Toast.makeText(activity?.applicationContext,"This is bad", Toast.LENGTH_SHORT).show()
+            }else if (checkText(patientName,"Unesite ime pacijenta") &&
                 checkText(patientLastName,"Unesite prezime pacijenta") &&
                 checkText(patientSymptoms,"Unesite simptome pacijenta")) {
-                val date: Date = Date()
-                val sdf: SimpleDateFormat = SimpleDateFormat("dd-MM-yyyy")
-                val dateString: String = sdf.format(date)
-                val sharedPreferences = activity?.getSharedPreferences(activity?.packageName, Context.MODE_PRIVATE)
-                val hospital = sharedPreferences?.getString(LoginActivity.USER_HOSPITAL, "Unknown")
-                val patient: Patient = PatientFactory().createPatient(name = patientName.text.toString(),
-                        lastName = patientLastName.text.toString(), stateOnReception = patientSymptoms.text.toString(), dateOfArrival = dateString, hospital = hospital)
+
+                val patient = createPatient(patientName.text.toString(), patientLastName.text.toString(), patientSymptoms.text.toString())
                 sharedViewModel.addPatientToCekaonica(patient)
                 Toast.makeText(activity?.applicationContext,"Pacijent dodat!", Toast.LENGTH_SHORT).show()
-                patientName?.setText("")
-                patientLastName?.setText("")
-                patientSymptoms?.setText("")
+
+                patientName.setText("")
+                patientLastName.setText("")
+                patientSymptoms.setText("")
             }
         }
+    }
+
+    private fun createPatient(patientName:String, patientLastName:String, patientSymptoms:String):Patient {
+        val date = Date()
+        val sharedPreferences = activity?.getSharedPreferences(activity?.packageName, Context.MODE_PRIVATE)
+        val hospital = sharedPreferences?.getString(LoginActivity.USER_HOSPITAL, "Unknown")
+        return PatientFactory().createPatient(name = patientName,
+            lastName = patientLastName, stateOnReception = patientSymptoms, dateOfArrival = date, hospital = hospital)
     }
 
     private fun checkText(text: EditText, textOut: String): Boolean {

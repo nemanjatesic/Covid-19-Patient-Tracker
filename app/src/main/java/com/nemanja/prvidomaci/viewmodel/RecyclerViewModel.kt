@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.nemanja.prvidomaci.model.Patient
+import java.util.*
 import kotlin.random.Random
 
 class RecyclerViewModel : ViewModel() {
@@ -21,8 +22,8 @@ class RecyclerViewModel : ViewModel() {
                 "firstState$i",
                 "currentState$i",
                 true,
-                "$i-04-2020",
-                "$i-05-2020"
+                Date(),
+                Date()
             )
             patientList.add(patient)
         }

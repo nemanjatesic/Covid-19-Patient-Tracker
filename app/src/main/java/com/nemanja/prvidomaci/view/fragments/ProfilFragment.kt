@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.nemanja.prvidomaci.R
+import com.nemanja.prvidomaci.view.activities.ChangeProfilActivity
 import com.nemanja.prvidomaci.view.activities.LoginActivity
 import com.nemanja.prvidomaci.view.activities.RecyclerActivity
 import kotlinx.android.synthetic.main.fragment_profil.*
@@ -48,5 +49,18 @@ class ProfilFragment : Fragment(R.layout.fragment_profil) {
             startActivity(intent)
             activity?.finish()
         }
+
+        buttonProfilIzmeni.setOnClickListener {
+            val intent = Intent(activity, ChangeProfilActivity::class.java)
+            startActivity(intent)
+        }
+
     }
+
+    override fun onResume() {
+        super.onResume()
+        setInformation()
+    }
+
+
 }
