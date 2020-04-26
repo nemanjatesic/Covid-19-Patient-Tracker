@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/et_user_hospital_change4"
+        android:id="@+id/et_patient_current_state_change"
         android:layout_width="0dp"
         android:layout_height="40dp"
 
@@ -16,10 +16,10 @@
         android:inputType="textPersonName"
         android:paddingStart="10dp"
         android:selectAllOnFocus="true"
-        app:layout_constraintEnd_toEndOf="@+id/et_user_hospital_change3"
+        app:layout_constraintEnd_toEndOf="@+id/et_patient_state_on_reception_change"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/et_user_hospital_change3"
-        app:layout_constraintTop_toBottomOf="@+id/et_user_hospital_change3" />
+        app:layout_constraintStart_toStartOf="@+id/et_patient_state_on_reception_change"
+        app:layout_constraintTop_toBottomOf="@+id/et_patient_state_on_reception_change" />
 
     <TextView
         android:id="@+id/textView8"
@@ -78,7 +78,7 @@
         app:layout_constraintTop_toBottomOf="@+id/et_patient_name_change" />
 
     <EditText
-        android:id="@+id/et_user_hospital_change3"
+        android:id="@+id/et_patient_state_on_reception_change"
         android:layout_width="0dp"
         android:layout_height="40dp"
 
@@ -102,8 +102,8 @@
         android:text="@string/odustani"
         android:textColor="@color/white"
         android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/et_user_hospital_change4"
-        app:layout_constraintTop_toBottomOf="@+id/et_user_hospital_change4" />
+        app:layout_constraintStart_toStartOf="@+id/et_patient_current_state_change"
+        app:layout_constraintTop_toBottomOf="@+id/et_patient_current_state_change" />
 
     <Button
         android:id="@+id/buttonPacijentIzmeni"
@@ -115,15 +115,15 @@
         android:text="@string/izmeni"
         android:textColor="@color/white"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/et_user_hospital_change4"
-        app:layout_constraintTop_toBottomOf="@+id/et_user_hospital_change4" />
+        app:layout_constraintEnd_toEndOf="@+id/et_patient_current_state_change"
+        app:layout_constraintTop_toBottomOf="@+id/et_patient_current_state_change" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/stanje_pri_prijemu"
-        app:layout_constraintBottom_toTopOf="@+id/et_user_hospital_change3"
+        app:layout_constraintBottom_toTopOf="@+id/et_patient_state_on_reception_change"
         app:layout_constraintStart_toStartOf="@+id/et_patient_lastname_change"
         app:layout_constraintTop_toBottomOf="@+id/et_patient_lastname_change"
         app:layout_constraintVertical_bias="0.619" />
@@ -133,9 +133,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/trenutno_stanje"
-        app:layout_constraintBottom_toTopOf="@+id/et_user_hospital_change4"
-        app:layout_constraintStart_toStartOf="@+id/et_user_hospital_change3"
-        app:layout_constraintTop_toBottomOf="@+id/et_user_hospital_change3"
+        app:layout_constraintBottom_toTopOf="@+id/et_patient_current_state_change"
+        app:layout_constraintStart_toStartOf="@+id/et_patient_state_on_reception_change"
+        app:layout_constraintTop_toBottomOf="@+id/et_patient_state_on_reception_change"
         app:layout_constraintVertical_bias="0.619" />
 
     <TextView
@@ -144,8 +144,8 @@
         android:layout_height="wrap_content"
         android:text="@string/datum_prijema"
         app:layout_constraintBottom_toTopOf="@+id/buttonPacijentOdustani"
-        app:layout_constraintStart_toStartOf="@+id/et_user_hospital_change4"
-        app:layout_constraintTop_toBottomOf="@+id/et_user_hospital_change4"
+        app:layout_constraintStart_toStartOf="@+id/et_patient_current_state_change"
+        app:layout_constraintTop_toBottomOf="@+id/et_patient_current_state_change"
         app:layout_constraintVertical_bias="0.17" />
 
     <TextView
@@ -154,7 +154,7 @@
         android:layout_height="wrap_content"
         android:text=""
         app:layout_constraintBottom_toTopOf="@+id/buttonPacijentOdustani"
-        app:layout_constraintStart_toStartOf="@+id/et_user_hospital_change4"
+        app:layout_constraintStart_toStartOf="@+id/et_patient_current_state_change"
         app:layout_constraintTop_toBottomOf="@+id/textView11"
         app:layout_constraintVertical_bias="0.392" />
 

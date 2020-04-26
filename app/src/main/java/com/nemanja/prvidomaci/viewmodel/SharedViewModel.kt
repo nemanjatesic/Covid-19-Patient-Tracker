@@ -111,6 +111,15 @@ class SharedViewModel : ViewModel() {
         patients.value = filteredList
     }
 
+    fun getPatientById(uuid: UUID, type: Int): Patient? {
+        when (type) {
+            CEKAONICA -> cekaonicaPacijentiList.forEach { if (it.id == uuid) return it }
+            HOSPITALIZOVANI -> hospitalizovaniPacijentiList.forEach { if (it.id == uuid) return it }
+            OTPUSTENI -> otpusteniPacijentiList.forEach { if (it.id == uuid) return it }
+        }
+        return null
+    }
+
     private fun replaceAll(strIn: String): String {
         var str = strIn.toLowerCase(Locale.ROOT)
         str = str.replace('č','c', ignoreCase = false)

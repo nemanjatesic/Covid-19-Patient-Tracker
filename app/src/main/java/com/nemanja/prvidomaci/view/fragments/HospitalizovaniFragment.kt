@@ -1,5 +1,7 @@
 package com.nemanja.prvidomaci.view.fragments
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.core.widget.doAfterTextChanged
@@ -10,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.nemanja.prvidomaci.R
 import com.nemanja.prvidomaci.model.Patient
 import com.nemanja.prvidomaci.model.PatientFactory
+import com.nemanja.prvidomaci.view.activities.KartonActivity
 import com.nemanja.prvidomaci.view.recycler.adapter.PatientAdapterHospitalizovani
 import com.nemanja.prvidomaci.view.recycler.diff.PatientDiffItemCallback
 import com.nemanja.prvidomaci.viewmodel.SharedViewModel
@@ -21,6 +24,11 @@ class HospitalizovaniFragment : Fragment(R.layout.fragment_hospitalizovani) {
     private val sharedViewModel: SharedViewModel by activityViewModels()
 
     private lateinit var patientAdapterHospitalizovani: PatientAdapterHospitalizovani
+
+    companion object {
+        const val MESSAGE_PATIENT = "PATIENT"
+        const val MESSAGE_REQUEST_CODE = 1
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -44,8 +52,9 @@ class HospitalizovaniFragment : Fragment(R.layout.fragment_hospitalizovani) {
     }
 
     private val onKartonClicked: (Patient) -> Unit = {
-//        sharedViewModel.addPatient(it, SharedViewModel.OTPUSTENI)
-//        sharedViewModel.removePatient(it, SharedViewModel.CEKAONICA)
+        val intent = Intent(activity, KartonActivity::class.java)
+        intent.putExtra(MESSAGE_PATIENT, it)
+        startActivityForResult(intent, MESSAGE_REQUEST_CODE)
     }
 
     private val onOtpustClicked: (Patient) -> Unit = {
@@ -64,6 +73,25 @@ class HospitalizovaniFragment : Fragment(R.layout.fragment_hospitalizovani) {
         sharedViewModel.getHospitalizovaniPacijenti().observe(viewLifecycleOwner, Observer {
             patientAdapterHospitalizovani.submitList(it)
         })
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == MESSAGE_REQUEST_CODE) {
+            if (resultCode == Activity.RESULT_OK) {
+                data?.let { intent ->
+                    val patient = intent.getParcelableExtra<Patient>(MESSAGE_PATIENT)
+                    if (patient != null) {
+                        val factory = PatientFactory()
+                        sharedViewModel.let {
+                            val patientTmp: Patient = it.getPatientById(patient.id, SharedViewModel.HOSPITALIZOVANI)?: factory.createPatient()
+                            sharedViewModel.removePatient(patientTmp, SharedViewModel.HOSPITALIZOVANI)
+                            sharedViewModel.addPatient(patient, SharedViewModel.HOSPITALIZOVANI)
+                        }
+                    }
+                }
+            }
+        }
     }
 
 }
