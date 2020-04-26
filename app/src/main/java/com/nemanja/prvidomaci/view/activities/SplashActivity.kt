@@ -11,13 +11,10 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val sharedPreferences = getSharedPreferences(packageName, Context.MODE_PRIVATE)
-//        val editor = sharedPreferences.edit()
-//        editor.putBoolean(LoginActivity.LOGGED_IN_KEY, false)
-//        editor.apply()
         val loggedIn = sharedPreferences.getBoolean(LoginActivity.LOGGED_IN_KEY, false)
         val intent: Intent
         intent = if (loggedIn) {
-            Intent(this, BottomNavigationActivity::class.java)
+            Intent(this, MainActivity::class.java)
         }else {
             Intent(this, LoginActivity::class.java)
         }

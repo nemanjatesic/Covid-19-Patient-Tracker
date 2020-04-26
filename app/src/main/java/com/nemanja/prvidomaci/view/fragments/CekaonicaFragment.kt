@@ -13,7 +13,7 @@ import com.nemanja.prvidomaci.model.PatientFactory
 import com.nemanja.prvidomaci.view.recycler.adapter.PatientAdapterCekaonica
 import com.nemanja.prvidomaci.view.recycler.diff.PatientDiffItemCallback
 import com.nemanja.prvidomaci.viewmodel.SharedViewModel
-import kotlinx.android.synthetic.main.activity_classic_recycler.*
+import kotlinx.android.synthetic.main.fragment_cekaonica.*
 import java.util.*
 
 class CekaonicaFragment : Fragment(R.layout.fragment_cekaonica) {

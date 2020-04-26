@@ -7,7 +7,7 @@ import com.nemanja.prvidomaci.R
 import com.nemanja.prvidomaci.view.viewpager.PagerTopAdapter
 import kotlinx.android.synthetic.main.fragment_tabs.*
 
-class ListeFragment : Fragment(R.layout.fragment_tabs) {
+class TabsFragment : Fragment(R.layout.fragment_tabs) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

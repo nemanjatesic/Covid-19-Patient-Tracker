@@ -7,15 +7,12 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import com.nemanja.prvidomaci.R
 import com.nemanja.prvidomaci.model.Patient
 import com.nemanja.prvidomaci.model.PatientFactory
 import com.nemanja.prvidomaci.view.activities.LoginActivity
-import com.nemanja.prvidomaci.viewmodel.DodajViewModel
 import com.nemanja.prvidomaci.viewmodel.SharedViewModel
 import kotlinx.android.synthetic.main.fragment_unos.*
-import java.text.SimpleDateFormat
 import java.util.*
 
 class UnosFragment : Fragment(R.layout.fragment_unos) {

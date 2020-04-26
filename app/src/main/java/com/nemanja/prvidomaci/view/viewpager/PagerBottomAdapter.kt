@@ -3,7 +3,7 @@ package com.nemanja.prvidomaci.view.viewpager
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.nemanja.prvidomaci.view.fragments.ListeFragment
+import com.nemanja.prvidomaci.view.fragments.TabsFragment
 import com.nemanja.prvidomaci.view.fragments.ProfilFragment
 import com.nemanja.prvidomaci.view.fragments.StanjeFragment
 import com.nemanja.prvidomaci.view.fragments.UnosFragment
@@ -22,7 +22,7 @@ class PagerBottomAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapte
         return when(position) {
             FRAGMENT_STANJE -> StanjeFragment()
             FRAGMENT_UNOS -> UnosFragment()
-            FRAGMENT_LISTE -> ListeFragment()
+            FRAGMENT_LISTE -> TabsFragment()
             else -> ProfilFragment()
         }
     }
