@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.nemanja.prvidomaci.model.Patient
 import com.squareup.picasso.Picasso
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.layout_patient_list_item.*
+import kotlinx.android.synthetic.main.layout_patient_list_item_cekaonica.*
 
 class PatientViewHolderCekaonica (
     override val containerView: View,
@@ -26,10 +26,10 @@ class PatientViewHolderCekaonica (
     }
 
     fun bind(patient: Patient) {
-        Picasso
-            .get()
-            .load(patient.picture)
-            .into(patientPictureIvContainer)
+//        Picasso
+//            .get()
+//            .load(patient.picture)
+//            .into(patientPictureIvContainer)
         patientNameTv.text = patient.name
         patientLastNameTv.text = patient.lastName
         patientState.text = patient.stateOnReception

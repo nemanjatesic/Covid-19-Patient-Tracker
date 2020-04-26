@@ -9,7 +9,6 @@ import java.util.*
 import kotlin.random.Random
 
 class SharedViewModel : ViewModel() {
-
     companion object {
         const val CEKAONICA = 0
         const val HOSPITALIZOVANI = 1
@@ -23,6 +22,18 @@ class SharedViewModel : ViewModel() {
     private val cekaonicaPacijentiList: MutableList<Patient> = mutableListOf()
     private val hospitalizovaniPacijentiList : MutableList<Patient> = mutableListOf()
     private val otpusteniPacijentiList : MutableList<Patient> = mutableListOf()
+
+
+    init {
+        val factory = PatientFactory()
+        for (i in 1..15) {
+            val patient = factory.createPatient(dateOfArrival = Date())
+            cekaonicaPacijentiList.add(patient)
+        }
+        val listToSubmit = mutableListOf<Patient>()
+        listToSubmit.addAll(cekaonicaPacijentiList)
+        cekaonicaPacijenti.value = listToSubmit
+    }
 
     fun getCekaonicaPacijenti() : LiveData<List<Patient>> {
         return cekaonicaPacijenti
@@ -93,10 +104,21 @@ class SharedViewModel : ViewModel() {
         }
 
         val filteredList = patientList.filter {
-            it.name.toLowerCase(Locale.ROOT).contains(str.toLowerCase(Locale.ROOT)) ||
-                    it.lastName.toLowerCase(Locale.ROOT).contains(str.toLowerCase(Locale.ROOT))
+            val name:String = replaceAll(it.name)
+            val lastName = replaceAll(it.lastName)
+            name.contains(replaceAll(str)) || lastName.contains(replaceAll(str))
         }
         patients.value = filteredList
+    }
+
+    private fun replaceAll(strIn: String): String {
+        var str = strIn.toLowerCase(Locale.ROOT)
+        str = str.replace('č','c', ignoreCase = false)
+        str = str.replace('ć','c', ignoreCase = false)
+        str = str.replace('š','s', ignoreCase = false)
+        str = str.replace("đ","dj", ignoreCase = false)
+        str = str.replace('ž','z', ignoreCase = false)
+        return str
     }
 
 }

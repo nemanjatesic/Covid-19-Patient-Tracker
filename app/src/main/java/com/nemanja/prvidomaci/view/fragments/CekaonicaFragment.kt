@@ -65,15 +65,10 @@ class CekaonicaFragment : Fragment(R.layout.fragment_cekaonica) {
 
     private fun initRecycler() {
         listRvCekaonica.layoutManager = LinearLayoutManager(activity)
-        patientAdapterCekaonica =
-            PatientAdapterCekaonica(
-                PatientDiffItemCallbackCekaonica(),
-                clickOnPicture,
-                clickOnZdrav,
-                clickOnHospitalizacija
-            )
+        patientAdapterCekaonica = PatientAdapterCekaonica(PatientDiffItemCallbackCekaonica(), clickOnPicture, clickOnZdrav, clickOnHospitalizacija)
         listRvCekaonica.adapter = patientAdapterCekaonica
         listRvCekaonica.addItemDecoration(LayoutMarginDecoration(1,toDP(activity?.applicationContext,20)))
+
     }
 
     private fun initObservers() {

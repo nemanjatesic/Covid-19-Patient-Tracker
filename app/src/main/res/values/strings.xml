@@ -30,4 +30,5 @@
     <string name="stanje_pri_prijemu">Stanje pri prijemu</string>
     <string name="trenutno_stanje">Trenutno stanje</string>
     <string name="datum_prijema">Datum prijema</string>
+    <string name="pretrazi">🔎 Pretrazi po imenu ili prezimenu</string>
 </resources>
