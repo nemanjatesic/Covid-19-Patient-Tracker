@@ -3,7 +3,7 @@ package com.nemanja.prvidomaci.view.recycler.diff
 import androidx.recyclerview.widget.DiffUtil
 import com.nemanja.prvidomaci.model.Patient
 
-class PatientDiffItemCallbackCekaonica : DiffUtil.ItemCallback<Patient>() {
+class PatientDiffItemCallback : DiffUtil.ItemCallback<Patient>() {
     override fun areItemsTheSame(oldItem: Patient, newItem: Patient): Boolean {
         return oldItem.id == newItem.id
     }

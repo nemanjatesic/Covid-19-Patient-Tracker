@@ -26,9 +26,11 @@
     <string name="izmeni">Izmeni</string>
     <string name="odjava">Odjava</string>
     <string name="odustani">Odustani</string>
-    <string name="karton">Karton pacijenta</string>
+    <string name="karton_pacijenta">Karton pacijenta</string>
     <string name="stanje_pri_prijemu">Stanje pri prijemu</string>
     <string name="trenutno_stanje">Trenutno stanje</string>
     <string name="datum_prijema">Datum prijema</string>
     <string name="pretrazi">🔎 Pretrazi po imenu ili prezimenu</string>
+    <string name="karton">Karton</string>
+    <string name="otpust">Otpust</string>
 </resources>

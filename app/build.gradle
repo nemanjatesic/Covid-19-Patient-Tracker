@@ -72,7 +72,7 @@ dependencies {
     // Tmp
     implementation 'androidx.navigation:navigation-ui-ktx:2.2.2'
 
-    implementation ('com.github.thekhaeng:recycler-margin:1.2.1') {
-        exclude group: 'com.android.support', module: 'recyclerview-v7'
-    }
+//    implementation ('com.github.thekhaeng:recycler-margin:1.2.1') {
+//        exclude group: 'com.android.support', module: 'recyclerview-v7'
+//    }
 }

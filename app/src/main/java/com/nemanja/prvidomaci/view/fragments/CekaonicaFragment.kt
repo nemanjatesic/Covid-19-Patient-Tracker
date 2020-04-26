@@ -1,11 +1,7 @@
 package com.nemanja.prvidomaci.view.fragments
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import android.util.TypedValue
 import android.view.View
-import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -13,11 +9,9 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nemanja.prvidomaci.R
 import com.nemanja.prvidomaci.model.Patient
-import com.nemanja.prvidomaci.view.activities.StyledActivity
 import com.nemanja.prvidomaci.view.recycler.adapter.PatientAdapterCekaonica
-import com.nemanja.prvidomaci.view.recycler.diff.PatientDiffItemCallbackCekaonica
+import com.nemanja.prvidomaci.view.recycler.diff.PatientDiffItemCallback
 import com.nemanja.prvidomaci.viewmodel.SharedViewModel
-import com.thekhaeng.recyclerviewmargin.LayoutMarginDecoration
 import kotlinx.android.synthetic.main.activity_classic_recycler.*
 
 class CekaonicaFragment : Fragment(R.layout.fragment_cekaonica) {
@@ -47,12 +41,6 @@ class CekaonicaFragment : Fragment(R.layout.fragment_cekaonica) {
         }
     }
 
-    private val clickOnPicture: (Patient) -> Unit = {
-        Toast.makeText(activity, it.toString(), Toast.LENGTH_SHORT).show()
-        val intent = Intent(activity, StyledActivity::class.java)
-        startActivity(intent)
-    }
-
     private val clickOnZdrav: (Patient) -> Unit = {
         sharedViewModel.addPatient(it, SharedViewModel.OTPUSTENI)
         sharedViewModel.removePatient(it, SharedViewModel.CEKAONICA)
@@ -65,10 +53,8 @@ class CekaonicaFragment : Fragment(R.layout.fragment_cekaonica) {
 
     private fun initRecycler() {
         listRvCekaonica.layoutManager = LinearLayoutManager(activity)
-        patientAdapterCekaonica = PatientAdapterCekaonica(PatientDiffItemCallbackCekaonica(), clickOnPicture, clickOnZdrav, clickOnHospitalizacija)
+        patientAdapterCekaonica = PatientAdapterCekaonica(PatientDiffItemCallback(), clickOnZdrav, clickOnHospitalizacija)
         listRvCekaonica.adapter = patientAdapterCekaonica
-        listRvCekaonica.addItemDecoration(LayoutMarginDecoration(1,toDP(activity?.applicationContext,20)))
-
     }
 
     private fun initObservers() {
@@ -77,8 +63,4 @@ class CekaonicaFragment : Fragment(R.layout.fragment_cekaonica) {
         })
     }
 
-    private fun toDP(context: Context?, value: Int): Int {
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
-            value.toFloat(),context?.resources?.displayMetrics).toInt()
-    }
 }
