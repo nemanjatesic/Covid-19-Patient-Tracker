@@ -7,16 +7,21 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.layout_patient_list_item.*
 
-class PatientViewHolder (
+class PatientViewHolderCekaonica (
     override val containerView: View,
-    onItemClicked: (Int) -> Unit) : RecyclerView.ViewHolder(containerView), LayoutContainer {
+    onItemClicked: (Int) -> Unit,
+    onZdravClicked: (Int) -> Unit,
+    onHospitalizacijaClicked: (Int) -> Unit) : RecyclerView.ViewHolder(containerView), LayoutContainer {
 
     init {
         patientPictureIvContainer.setOnClickListener {
             onItemClicked.invoke(adapterPosition)
         }
         buttonZdrav.setOnClickListener {
-
+            onZdravClicked.invoke(adapterPosition)
+        }
+        buttonHospitalizacija.setOnClickListener {
+            onHospitalizacijaClicked.invoke(adapterPosition)
         }
     }
 

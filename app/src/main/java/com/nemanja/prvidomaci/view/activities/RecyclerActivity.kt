@@ -1,24 +1,18 @@
 package com.nemanja.prvidomaci.view.activities
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.nemanja.prvidomaci.R
-import com.nemanja.prvidomaci.model.PatientFactory
-import com.nemanja.prvidomaci.view.recycler.adapter.PatientAdapter
-import com.nemanja.prvidomaci.view.recycler.diff.PatientDiffItemCallback
+import com.nemanja.prvidomaci.view.recycler.adapter.PatientAdapterCekaonica
 import com.nemanja.prvidomaci.viewmodel.RecyclerViewModel
-import kotlinx.android.synthetic.main.activity_classic_recycler.*
 
 class RecyclerActivity : AppCompatActivity(R.layout.activity_classic_recycler) {
 
     private val recyclerViewModel: RecyclerViewModel by viewModels()
 
-    private lateinit var patientAdapter: PatientAdapter
+    private lateinit var patientAdapter: PatientAdapterCekaonica
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

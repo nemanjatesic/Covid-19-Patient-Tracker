@@ -14,9 +14,9 @@ class PatientFactory {
     }
 
     fun createPatient(pictureUrl: String? = unknownImage, name: String? = "Jane", lastName: String? = "Doe", hospital: String? = unknown, stateOnReception: String? = unknown,
-                           currentState: String? = unknown, inHospital: Boolean? = true, dateOfArrival: Date? = unknownDate, dateOfLeaving: Date? = unknownDate) : Patient{
+                      currentState: String? = unknown, inHospital: Boolean? = true, dateOfArrival: Date? = unknownDate, dateOfHospitalization: Date? = null, dateOfLeaving: Date? = null) : Patient {
         return Patient(
-            Random.nextInt(101, 99999),
+            UUID.randomUUID(),
             pictureUrl ?: unknownImage,
             name ?: "Jane",
             lastName ?: "Doe",
@@ -25,7 +25,8 @@ class PatientFactory {
             currentState ?: unknown,
             inHospital ?: true,
             dateOfArrival ?: unknownDate,
-            dateOfLeaving ?: unknownDate
+            dateOfHospitalization,
+            dateOfLeaving
         )
     }
 

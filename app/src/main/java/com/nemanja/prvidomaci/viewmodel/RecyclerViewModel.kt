@@ -14,7 +14,7 @@ class RecyclerViewModel : ViewModel() {
     init {
         for (i in 1..100) {
             val patient = Patient(
-                i,
+                UUID.randomUUID(),
                 "https://electric-fun.com/wp-content/uploads/2020/01/sony-car-796x418-1.jpg",
                 "ime$i",
                 "prezime$i",
@@ -22,6 +22,7 @@ class RecyclerViewModel : ViewModel() {
                 "firstState$i",
                 "currentState$i",
                 true,
+                Date(),
                 Date(),
                 Date()
             )

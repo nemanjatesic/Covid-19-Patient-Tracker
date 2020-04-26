@@ -16,48 +16,87 @@ class SharedViewModel : ViewModel() {
         const val OTPUSTENI = 2
     }
 
-    private val cekaonicaPacijenti : MutableLiveData<MutableList<Patient>> = MutableLiveData()
-    private val hospitalizovaniPacijenti : MutableLiveData<MutableList<Patient>> = MutableLiveData()
-    private val otpusteniPacijenti : MutableLiveData<MutableList<Patient>> = MutableLiveData()
+    private val cekaonicaPacijenti : MutableLiveData<List<Patient>> = MutableLiveData()
+    private val hospitalizovaniPacijenti : MutableLiveData<List<Patient>> = MutableLiveData()
+    private val otpusteniPacijenti : MutableLiveData<List<Patient>> = MutableLiveData()
 
-    fun getCekaonicaPacijenti() : LiveData<MutableList<Patient>> {
+    private val cekaonicaPacijentiList: MutableList<Patient> = mutableListOf()
+    private val hospitalizovaniPacijentiList : MutableList<Patient> = mutableListOf()
+    private val otpusteniPacijentiList : MutableList<Patient> = mutableListOf()
+
+    fun getCekaonicaPacijenti() : LiveData<List<Patient>> {
         return cekaonicaPacijenti
     }
 
-    fun getHospitalizovaniPacijenti() : LiveData<MutableList<Patient>> {
+    fun getHospitalizovaniPacijenti() : LiveData<List<Patient>> {
         return hospitalizovaniPacijenti
     }
 
-    fun getOtpusteniPacijenti() : LiveData<MutableList<Patient>> {
+    fun getOtpusteniPacijenti() : LiveData<List<Patient>> {
         return otpusteniPacijenti
     }
 
     fun addPatient(patient: Patient, type: Int) {
-        val tmp: MutableList<Patient> = when (type){
-            CEKAONICA -> cekaonicaPacijenti.value
-            HOSPITALIZOVANI -> hospitalizovaniPacijenti.value
-            else -> otpusteniPacijenti.value
-        } ?: mutableListOf()
-        tmp.add(patient)
+        val listToSubmit = mutableListOf<Patient>()
         when (type) {
-            CEKAONICA -> cekaonicaPacijenti.value = tmp
-            HOSPITALIZOVANI -> hospitalizovaniPacijenti.value = tmp
-            else -> otpusteniPacijenti.value = tmp
+            CEKAONICA -> {
+                cekaonicaPacijentiList.add(patient)
+                listToSubmit.addAll(cekaonicaPacijentiList)
+                cekaonicaPacijenti.value = listToSubmit
+            }
+            HOSPITALIZOVANI -> {
+                hospitalizovaniPacijentiList.add(patient)
+                listToSubmit.addAll(hospitalizovaniPacijentiList)
+                hospitalizovaniPacijenti.value = listToSubmit
+            }
+            else -> {
+                otpusteniPacijentiList.add(patient)
+                listToSubmit.addAll(otpusteniPacijentiList)
+                otpusteniPacijenti.value = listToSubmit
+            }
         }
     }
 
     fun removePatient(patient: Patient, type: Int) {
-        val tmp: MutableList<Patient> = when (type){
-            CEKAONICA -> cekaonicaPacijenti.value
-            HOSPITALIZOVANI -> hospitalizovaniPacijenti.value
-            else -> otpusteniPacijenti.value
-        } ?: return
-        tmp.remove(patient)
+        val listToSubmit = mutableListOf<Patient>()
         when (type) {
-            CEKAONICA -> cekaonicaPacijenti.value = tmp
-            HOSPITALIZOVANI -> hospitalizovaniPacijenti.value = tmp
-            else -> otpusteniPacijenti.value = tmp
+            CEKAONICA -> {
+                cekaonicaPacijentiList.remove(patient)
+                listToSubmit.addAll(cekaonicaPacijentiList)
+                cekaonicaPacijenti.value = listToSubmit
+            }
+            HOSPITALIZOVANI -> {
+                hospitalizovaniPacijentiList.remove(patient)
+                listToSubmit.addAll(hospitalizovaniPacijentiList)
+                hospitalizovaniPacijenti.value = listToSubmit
+            }
+            else -> {
+                otpusteniPacijentiList.remove(patient)
+                listToSubmit.addAll(otpusteniPacijentiList)
+                otpusteniPacijenti.value = listToSubmit
+            }
         }
+    }
+
+    fun filterPatients(str: String?, type: Int) {
+        if (str == null)
+            return
+        val patientList = when(type) {
+            CEKAONICA -> cekaonicaPacijentiList
+            HOSPITALIZOVANI -> hospitalizovaniPacijentiList
+            else -> otpusteniPacijentiList
+        }
+        val patients: MutableLiveData<List<Patient>> = when(type) {
+            CEKAONICA -> cekaonicaPacijenti
+            HOSPITALIZOVANI -> hospitalizovaniPacijenti
+            else -> otpusteniPacijenti
+        }
+
+        val filteredList = patientList.filter {
+            it.name.toLowerCase(Locale.ROOT).contains(str.toLowerCase(Locale.ROOT)) ||
+                    it.lastName.toLowerCase(Locale.ROOT).contains(str.toLowerCase(Locale.ROOT))
+        }
+        patients.value = filteredList
     }
 
 }

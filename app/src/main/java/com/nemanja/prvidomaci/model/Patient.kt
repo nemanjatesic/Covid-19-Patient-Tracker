@@ -3,7 +3,7 @@ package com.nemanja.prvidomaci.model
 import java.util.*
 
 data class Patient(
-    val id: Int,
+    val id: UUID,
     val picture: String,
     val name: String,
     val lastName: String,
@@ -12,5 +12,6 @@ data class Patient(
     val currentState: String,
     val inHospital: Boolean,
     val dateOfArrival: Date,
-    val dateOfLeaving: Date
+    val dateOfHospitalization: Date?,
+    val dateOfLeaving: Date?
 )
