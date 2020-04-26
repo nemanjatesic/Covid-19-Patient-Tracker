@@ -20,7 +20,7 @@ import java.util.*
 
 class UnosFragment : Fragment(R.layout.fragment_unos) {
 
-    private val showViewModel: DodajViewModel by viewModels()
+    // private val showViewModel: DodajViewModel by viewModels()
     private val sharedViewModel: SharedViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -45,7 +45,7 @@ class UnosFragment : Fragment(R.layout.fragment_unos) {
                 checkText(patientSymptoms,"Unesite simptome pacijenta")) {
 
                 val patient = createPatient(patientName.text.toString(), patientLastName.text.toString(), patientSymptoms.text.toString())
-                sharedViewModel.addPatientToCekaonica(patient)
+                sharedViewModel.addPatient(patient, SharedViewModel.CEKAONICA)
                 Toast.makeText(activity?.applicationContext,"Pacijent dodat!", Toast.LENGTH_SHORT).show()
 
                 patientName.setText("")

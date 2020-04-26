@@ -10,6 +10,7 @@ import com.nemanja.prvidomaci.R
 import com.nemanja.prvidomaci.view.activities.ChangeProfilActivity
 import com.nemanja.prvidomaci.view.activities.LoginActivity
 import com.nemanja.prvidomaci.view.activities.RecyclerActivity
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_profil.*
 
 class ProfilFragment : Fragment(R.layout.fragment_profil) {

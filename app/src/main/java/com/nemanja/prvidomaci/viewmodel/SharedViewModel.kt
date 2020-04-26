@@ -10,6 +10,12 @@ import kotlin.random.Random
 
 class SharedViewModel : ViewModel() {
 
+    companion object {
+        const val CEKAONICA = 0
+        const val HOSPITALIZOVANI = 1
+        const val OTPUSTENI = 2
+    }
+
     private val cekaonicaPacijenti : MutableLiveData<MutableList<Patient>> = MutableLiveData()
     private val hospitalizovaniPacijenti : MutableLiveData<MutableList<Patient>> = MutableLiveData()
     private val otpusteniPacijenti : MutableLiveData<MutableList<Patient>> = MutableLiveData()
@@ -26,38 +32,32 @@ class SharedViewModel : ViewModel() {
         return otpusteniPacijenti
     }
 
-    fun addPatientToCekaonica(patient: Patient) {
-        var tmp = cekaonicaPacijenti.value
-        if (tmp == null)
-            tmp = mutableListOf()
+    fun addPatient(patient: Patient, type: Int) {
+        val tmp: MutableList<Patient> = when (type){
+            CEKAONICA -> cekaonicaPacijenti.value
+            HOSPITALIZOVANI -> hospitalizovaniPacijenti.value
+            else -> otpusteniPacijenti.value
+        } ?: mutableListOf()
         tmp.add(patient)
-        cekaonicaPacijenti.value = tmp
-    }
-
-    fun addRandom() {
-        var tmp = cekaonicaPacijenti.value
-        if (tmp == null) {
-            tmp = mutableListOf<Patient>()
+        when (type) {
+            CEKAONICA -> cekaonicaPacijenti.value = tmp
+            HOSPITALIZOVANI -> hospitalizovaniPacijenti.value = tmp
+            else -> otpusteniPacijenti.value = tmp
         }
-        tmp.add(addPatient(null,null,null,null,null,null,null,null,null))
-        cekaonicaPacijenti.value = tmp
     }
 
-    private fun addPatient(pictureUrl: String?, name: String?, lastName: String?, hospital: String?, stateOnReception: String?,
-                           currentState: String?, inHospital: Boolean?, dateOfArrival: Date?, dateOfLeaving: Date?) : Patient{
-        return Patient(
-            Random.nextInt(101, 99999),
-            pictureUrl
-                ?: "https://us.123rf.com/450wm/mialima/mialima1603/mialima160300025/55096766-stock-vector-male-user-icon-isolated-on-a-white-background-account-avatar-for-web-user-profile-picture-unknown-ma.jpg?ver=6",
-            name ?: "Jane",
-            lastName ?: "Doe",
-            hospital ?: "Unknown",
-            stateOnReception ?: "Unknown",
-            currentState ?: "Unknown",
-            inHospital ?: true,
-            dateOfArrival ?: PatientFactory.unknownDate,
-            dateOfLeaving ?: PatientFactory.unknownDate
-        )
+    fun removePatient(patient: Patient, type: Int) {
+        val tmp: MutableList<Patient> = when (type){
+            CEKAONICA -> cekaonicaPacijenti.value
+            HOSPITALIZOVANI -> hospitalizovaniPacijenti.value
+            else -> otpusteniPacijenti.value
+        } ?: return
+        tmp.remove(patient)
+        when (type) {
+            CEKAONICA -> cekaonicaPacijenti.value = tmp
+            HOSPITALIZOVANI -> hospitalizovaniPacijenti.value = tmp
+            else -> otpusteniPacijenti.value = tmp
+        }
     }
 
 }

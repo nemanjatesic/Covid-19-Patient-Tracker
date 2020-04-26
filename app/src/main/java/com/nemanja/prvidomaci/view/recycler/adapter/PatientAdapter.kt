@@ -16,8 +16,8 @@ class PatientAdapter(
         val layoutInflater = LayoutInflater.from(parent.context)
         val containerView = layoutInflater.inflate(R.layout.layout_patient_list_item, parent, false)
         return PatientViewHolder(containerView) {
-            val car = getItem(it)
-            onPatientClicked.invoke(car)
+            val patient = getItem(it)
+            onPatientClicked.invoke(patient)
         }
     }
 

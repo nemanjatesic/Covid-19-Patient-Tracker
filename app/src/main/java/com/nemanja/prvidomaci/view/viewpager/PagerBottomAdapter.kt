@@ -8,7 +8,7 @@ import com.nemanja.prvidomaci.view.fragments.ProfilFragment
 import com.nemanja.prvidomaci.view.fragments.StanjeFragment
 import com.nemanja.prvidomaci.view.fragments.UnosFragment
 
-class PagerAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+class PagerBottomAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     companion object {
         private const val ITEM_COUNT = 4

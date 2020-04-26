@@ -42,8 +42,8 @@ class RecyclerViewModel : ViewModel() {
         }
 
         val filteredList = patientList.filter {
-            it.name.toLowerCase().startsWith(name?.toLowerCase() ?:it.name.toLowerCase()) &&
-                    it.lastName.toLowerCase().startsWith(lastName?.toLowerCase() ?:it.lastName.toLowerCase())
+            it.name.toLowerCase().contains(name?.toLowerCase() ?:it.name.toLowerCase()) &&
+                    it.lastName.toLowerCase().contains(lastName?.toLowerCase() ?:it.lastName.toLowerCase())
         }
         patients.value = filteredList
     }

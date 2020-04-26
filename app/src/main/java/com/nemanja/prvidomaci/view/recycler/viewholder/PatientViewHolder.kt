@@ -12,8 +12,11 @@ class PatientViewHolder (
     onItemClicked: (Int) -> Unit) : RecyclerView.ViewHolder(containerView), LayoutContainer {
 
     init {
-        patientPictureIv.setOnClickListener {
+        patientPictureIvContainer.setOnClickListener {
             onItemClicked.invoke(adapterPosition)
+        }
+        buttonZdrav.setOnClickListener {
+
         }
     }
 
@@ -21,10 +24,10 @@ class PatientViewHolder (
         Picasso
             .get()
             .load(patient.picture)
-            .into(patientPictureIv)
+            .into(patientPictureIvContainer)
         patientNameTv.text = patient.name
         patientLastNameTv.text = patient.lastName
-        patientState.text = patient.currentState
+        patientState.text = patient.stateOnReception
     }
 
 }
