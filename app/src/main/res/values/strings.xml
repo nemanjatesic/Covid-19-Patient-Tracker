@@ -33,4 +33,6 @@
     <string name="pretrazi">🔎 Pretrazi po imenu ili prezimenu</string>
     <string name="karton">Karton</string>
     <string name="otpust">Otpust</string>
+    <string name="otpusten">Otpusten:</string>
+    <string name="unknown">Unknown</string>
 </resources>

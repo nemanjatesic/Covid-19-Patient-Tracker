@@ -37,4 +37,21 @@ class PatientFactory {
         val sdf = SimpleDateFormat("dd-MM-yyyy")
         return sdf.parse("10-10-1980") ?: Date()
     }
+
+    fun copyPatient(patient: Patient, pictureUrl: String? = null, name: String? = null, lastName: String? = null, hospital: String? = null, stateOnReception: String? = null,
+                    currentState: String? = null, inHospital: Boolean? = null, dateOfArrival: Date? = null, dateOfHospitalization: Date? = null, dateOfLeaving: Date? = null): Patient {
+        return Patient(
+            patient.id,
+            pictureUrl ?: patient.picture,
+            name ?: patient.name,
+            lastName ?: patient.lastName,
+            hospital ?: patient.hospital,
+            stateOnReception ?: patient.stateOnReception,
+            currentState ?: patient.currentState,
+            inHospital ?: patient.inHospital,
+            dateOfArrival ?: patient.dateOfArrival,
+            dateOfHospitalization ?: patient.dateOfHospitalization,
+            dateOfLeaving ?: patient.dateOfLeaving
+        )
+    }
 }

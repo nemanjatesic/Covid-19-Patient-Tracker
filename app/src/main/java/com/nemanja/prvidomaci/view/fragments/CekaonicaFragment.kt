@@ -9,10 +9,12 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nemanja.prvidomaci.R
 import com.nemanja.prvidomaci.model.Patient
+import com.nemanja.prvidomaci.model.PatientFactory
 import com.nemanja.prvidomaci.view.recycler.adapter.PatientAdapterCekaonica
 import com.nemanja.prvidomaci.view.recycler.diff.PatientDiffItemCallback
 import com.nemanja.prvidomaci.viewmodel.SharedViewModel
 import kotlinx.android.synthetic.main.activity_classic_recycler.*
+import java.util.*
 
 class CekaonicaFragment : Fragment(R.layout.fragment_cekaonica) {
 
@@ -42,12 +44,14 @@ class CekaonicaFragment : Fragment(R.layout.fragment_cekaonica) {
     }
 
     private val clickOnZdrav: (Patient) -> Unit = {
-        sharedViewModel.addPatient(it, SharedViewModel.OTPUSTENI)
+        val factory = PatientFactory()
+        sharedViewModel.addPatient(factory.copyPatient(it, dateOfLeaving = Date()), SharedViewModel.OTPUSTENI)
         sharedViewModel.removePatient(it, SharedViewModel.CEKAONICA)
     }
 
     private val clickOnHospitalizacija: (Patient) -> Unit = {
-        sharedViewModel.addPatient(it, SharedViewModel.HOSPITALIZOVANI)
+        val factory = PatientFactory()
+        sharedViewModel.addPatient(factory.copyPatient(it, dateOfHospitalization = Date()), SharedViewModel.HOSPITALIZOVANI)
         sharedViewModel.removePatient(it, SharedViewModel.CEKAONICA)
     }
 

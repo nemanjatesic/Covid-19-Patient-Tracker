@@ -9,12 +9,14 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nemanja.prvidomaci.R
 import com.nemanja.prvidomaci.model.Patient
+import com.nemanja.prvidomaci.model.PatientFactory
 import com.nemanja.prvidomaci.view.recycler.adapter.PatientAdapterCekaonica
 import com.nemanja.prvidomaci.view.recycler.adapter.PatientAdapterHospitalizovani
 import com.nemanja.prvidomaci.view.recycler.diff.PatientDiffItemCallback
 import com.nemanja.prvidomaci.viewmodel.SharedViewModel
 import kotlinx.android.synthetic.main.activity_classic_recycler.*
 import kotlinx.android.synthetic.main.fragment_hospitalizovani.*
+import java.util.*
 
 class HospitalizovaniFragment : Fragment(R.layout.fragment_hospitalizovani) {
 
@@ -49,7 +51,8 @@ class HospitalizovaniFragment : Fragment(R.layout.fragment_hospitalizovani) {
     }
 
     private val onOtpustClicked: (Patient) -> Unit = {
-        sharedViewModel.addPatient(it, SharedViewModel.OTPUSTENI)
+        val factory = PatientFactory()
+        sharedViewModel.addPatient(factory.copyPatient(it, dateOfLeaving = Date()), SharedViewModel.OTPUSTENI)
         sharedViewModel.removePatient(it, SharedViewModel.HOSPITALIZOVANI)
     }
 
