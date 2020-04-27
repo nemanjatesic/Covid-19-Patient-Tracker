@@ -47,12 +47,14 @@ class CekaonicaFragment : Fragment(R.layout.fragment_cekaonica) {
         val factory = PatientFactory()
         sharedViewModel.addPatient(factory.copyPatient(it, dateOfLeaving = Date()), SharedViewModel.OTPUSTENI)
         sharedViewModel.removePatient(it, SharedViewModel.CEKAONICA)
+        sharedViewModel.filterPatients(et_search_cekaonica.text.toString(), SharedViewModel.CEKAONICA)
     }
 
     private val clickOnHospitalizacija: (Patient) -> Unit = {
         val factory = PatientFactory()
         sharedViewModel.addPatient(factory.copyPatient(it, dateOfHospitalization = Date()), SharedViewModel.HOSPITALIZOVANI)
         sharedViewModel.removePatient(it, SharedViewModel.CEKAONICA)
+        sharedViewModel.filterPatients(et_search_cekaonica.text.toString(), SharedViewModel.CEKAONICA)
     }
 
     private fun initRecycler() {
@@ -65,6 +67,16 @@ class CekaonicaFragment : Fragment(R.layout.fragment_cekaonica) {
         sharedViewModel.getCekaonicaPacijenti().observe(viewLifecycleOwner, Observer {
             patientAdapterCekaonica.submitList(it)
         })
+    }
+
+    override fun onPause() {
+        super.onPause()
+        sharedViewModel.filterPatients("", SharedViewModel.CEKAONICA)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        sharedViewModel.filterPatients(et_search_cekaonica.text.toString(), SharedViewModel.CEKAONICA)
     }
 
 }

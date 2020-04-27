@@ -56,4 +56,14 @@ class OtpusteniFragment : Fragment(R.layout.fragment_otpusteni) {
             patientAdapterOtpusteni.submitList(it)
         })
     }
+
+    override fun onPause() {
+        super.onPause()
+        sharedViewModel.filterPatients("", SharedViewModel.OTPUSTENI)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        sharedViewModel.filterPatients(et_search_hospitalizovani.text.toString(), SharedViewModel.OTPUSTENI)
+    }
 }

@@ -61,6 +61,7 @@ class HospitalizovaniFragment : Fragment(R.layout.fragment_hospitalizovani) {
         val factory = PatientFactory()
         sharedViewModel.addPatient(factory.copyPatient(it, dateOfLeaving = Date()), SharedViewModel.OTPUSTENI)
         sharedViewModel.removePatient(it, SharedViewModel.HOSPITALIZOVANI)
+        sharedViewModel.filterPatients(et_search_hospitalizovani.text.toString(), SharedViewModel.HOSPITALIZOVANI)
     }
 
     private fun initRecycler() {
@@ -92,6 +93,16 @@ class HospitalizovaniFragment : Fragment(R.layout.fragment_hospitalizovani) {
                 }
             }
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        sharedViewModel.filterPatients("", SharedViewModel.HOSPITALIZOVANI)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        sharedViewModel.filterPatients(et_search_hospitalizovani.text.toString(), SharedViewModel.HOSPITALIZOVANI)
     }
 
 }
