@@ -17,6 +17,7 @@ import com.nemanja.prvidomaci.view.recycler.adapter.PatientAdapterHospitalizovan
 import com.nemanja.prvidomaci.view.recycler.diff.PatientDiffItemCallback
 import com.nemanja.prvidomaci.viewmodel.SharedViewModel
 import kotlinx.android.synthetic.main.fragment_hospitalizovani.*
+import timber.log.Timber
 import java.util.*
 
 class HospitalizovaniFragment : Fragment(R.layout.fragment_hospitalizovani) {
@@ -24,6 +25,7 @@ class HospitalizovaniFragment : Fragment(R.layout.fragment_hospitalizovani) {
     private val sharedViewModel: SharedViewModel by activityViewModels()
 
     private lateinit var patientAdapterHospitalizovani: PatientAdapterHospitalizovani
+    private var pritisnut = false
 
     companion object {
         const val MESSAGE_PATIENT = "PATIENT"
@@ -47,7 +49,8 @@ class HospitalizovaniFragment : Fragment(R.layout.fragment_hospitalizovani) {
 
     private fun initListeners() {
         et_search_hospitalizovani.doAfterTextChanged {
-            sharedViewModel.filterPatients(it.toString(), SharedViewModel.HOSPITALIZOVANI)
+            if (pritisnut)
+                sharedViewModel.filterPatients(it.toString(), SharedViewModel.HOSPITALIZOVANI)
         }
     }
 
@@ -97,11 +100,13 @@ class HospitalizovaniFragment : Fragment(R.layout.fragment_hospitalizovani) {
 
     override fun onPause() {
         super.onPause()
+        pritisnut = false
         sharedViewModel.filterPatients("", SharedViewModel.HOSPITALIZOVANI)
     }
 
     override fun onResume() {
         super.onResume()
+        pritisnut = true
         sharedViewModel.filterPatients(et_search_hospitalizovani.text.toString(), SharedViewModel.HOSPITALIZOVANI)
     }
 

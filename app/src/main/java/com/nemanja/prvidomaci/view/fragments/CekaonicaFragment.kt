@@ -14,6 +14,7 @@ import com.nemanja.prvidomaci.view.recycler.adapter.PatientAdapterCekaonica
 import com.nemanja.prvidomaci.view.recycler.diff.PatientDiffItemCallback
 import com.nemanja.prvidomaci.viewmodel.SharedViewModel
 import kotlinx.android.synthetic.main.fragment_cekaonica.*
+import timber.log.Timber
 import java.util.*
 
 class CekaonicaFragment : Fragment(R.layout.fragment_cekaonica) {
@@ -21,6 +22,7 @@ class CekaonicaFragment : Fragment(R.layout.fragment_cekaonica) {
     private val sharedViewModel: SharedViewModel by activityViewModels()
 
     private lateinit var patientAdapterCekaonica: PatientAdapterCekaonica
+    private var pritisnut = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -39,7 +41,8 @@ class CekaonicaFragment : Fragment(R.layout.fragment_cekaonica) {
 
     private fun initListeners() {
         et_search_cekaonica.doAfterTextChanged {
-            sharedViewModel.filterPatients(it.toString(), SharedViewModel.CEKAONICA)
+            if (pritisnut)
+                sharedViewModel.filterPatients(it.toString(), SharedViewModel.CEKAONICA)
         }
     }
 
@@ -71,11 +74,13 @@ class CekaonicaFragment : Fragment(R.layout.fragment_cekaonica) {
 
     override fun onPause() {
         super.onPause()
+        pritisnut = false
         sharedViewModel.filterPatients("", SharedViewModel.CEKAONICA)
     }
 
     override fun onResume() {
         super.onResume()
+        pritisnut = true
         sharedViewModel.filterPatients(et_search_cekaonica.text.toString(), SharedViewModel.CEKAONICA)
     }
 

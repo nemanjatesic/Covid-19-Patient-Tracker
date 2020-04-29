@@ -14,15 +14,15 @@ import com.nemanja.prvidomaci.view.recycler.adapter.PatientAdapterHospitalizovan
 import com.nemanja.prvidomaci.view.recycler.adapter.PatientAdapterOtpusteni
 import com.nemanja.prvidomaci.view.recycler.diff.PatientDiffItemCallback
 import com.nemanja.prvidomaci.viewmodel.SharedViewModel
-import kotlinx.android.synthetic.main.fragment_hospitalizovani.*
-import kotlinx.android.synthetic.main.fragment_hospitalizovani.et_search_hospitalizovani
 import kotlinx.android.synthetic.main.fragment_otpusteni.*
+import timber.log.Timber
 
 class OtpusteniFragment : Fragment(R.layout.fragment_otpusteni) {
 
     private val sharedViewModel: SharedViewModel by activityViewModels()
 
     private lateinit var patientAdapterOtpusteni: PatientAdapterOtpusteni
+    private var pritisnut = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -40,8 +40,9 @@ class OtpusteniFragment : Fragment(R.layout.fragment_otpusteni) {
     }
 
     private fun initListeners() {
-        et_search_hospitalizovani.doAfterTextChanged {
-            sharedViewModel.filterPatients(it.toString(), SharedViewModel.OTPUSTENI)
+        et_search_otpusteni.doAfterTextChanged {
+            if (pritisnut)
+                sharedViewModel.filterPatients(it.toString(), SharedViewModel.OTPUSTENI)
         }
     }
 
@@ -59,11 +60,13 @@ class OtpusteniFragment : Fragment(R.layout.fragment_otpusteni) {
 
     override fun onPause() {
         super.onPause()
+        pritisnut = false
         sharedViewModel.filterPatients("", SharedViewModel.OTPUSTENI)
     }
 
     override fun onResume() {
         super.onResume()
-        sharedViewModel.filterPatients(et_search_hospitalizovani.text.toString(), SharedViewModel.OTPUSTENI)
+        pritisnut = true
+        sharedViewModel.filterPatients(et_search_otpusteni.text.toString(), SharedViewModel.OTPUSTENI)
     }
 }
