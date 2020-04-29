@@ -7,15 +7,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.nemanja.prvidomaci.R
-import com.nemanja.prvidomaci.model.Patient
-import com.nemanja.prvidomaci.view.recycler.adapter.PatientAdapterHospitalizovani
 import com.nemanja.prvidomaci.view.recycler.adapter.PatientAdapterOtpusteni
 import com.nemanja.prvidomaci.view.recycler.diff.PatientDiffItemCallback
 import com.nemanja.prvidomaci.viewmodel.SharedViewModel
 import kotlinx.android.synthetic.main.fragment_otpusteni.*
-import timber.log.Timber
 
 class OtpusteniFragment : Fragment(R.layout.fragment_otpusteni) {
 

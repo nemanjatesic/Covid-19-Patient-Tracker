@@ -1,7 +1,7 @@
 package com.nemanja.prvidomaci.view.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.nemanja.prvidomaci.R
 import com.nemanja.prvidomaci.view.viewpager.PagerBottomAdapter
 import kotlinx.android.synthetic.main.activity_main.*

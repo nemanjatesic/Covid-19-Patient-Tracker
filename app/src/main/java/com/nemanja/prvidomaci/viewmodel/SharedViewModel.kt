@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import com.nemanja.prvidomaci.model.Patient
 import com.nemanja.prvidomaci.model.PatientFactory
 import java.util.*
-import kotlin.random.Random
 
 class SharedViewModel : ViewModel() {
     companion object {

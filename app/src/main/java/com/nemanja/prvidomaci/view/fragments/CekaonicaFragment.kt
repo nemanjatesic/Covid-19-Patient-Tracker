@@ -14,7 +14,6 @@ import com.nemanja.prvidomaci.view.recycler.adapter.PatientAdapterCekaonica
 import com.nemanja.prvidomaci.view.recycler.diff.PatientDiffItemCallback
 import com.nemanja.prvidomaci.viewmodel.SharedViewModel
 import kotlinx.android.synthetic.main.fragment_cekaonica.*
-import timber.log.Timber
 import java.util.*
 
 class CekaonicaFragment : Fragment(R.layout.fragment_cekaonica) {

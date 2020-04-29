@@ -17,7 +17,6 @@ import com.nemanja.prvidomaci.view.recycler.adapter.PatientAdapterHospitalizovan
 import com.nemanja.prvidomaci.view.recycler.diff.PatientDiffItemCallback
 import com.nemanja.prvidomaci.viewmodel.SharedViewModel
 import kotlinx.android.synthetic.main.fragment_hospitalizovani.*
-import timber.log.Timber
 import java.util.*
 
 class HospitalizovaniFragment : Fragment(R.layout.fragment_hospitalizovani) {
